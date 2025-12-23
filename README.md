@@ -63,3 +63,37 @@ Open your terminal in the project root and use the following targets:
     <td>If the generated .app or .deb won't execute, ensure you have the necessary write permissions in the dist/ directory.</td>
   </tr>
 </table>
+
+## Automated Releases
+This project uses GitHub Actions to automatically build and distribute native installers. The workflow is split into two phases: Build and Release.
+
+### The Build Phase (Continuous Integration)
+Every time you push code to the main branch or open a Pull Request:
+- GitHub starts a macOS runner and an Ubuntu runner.
+- Both systems compile the code and create their respective installers (.dmg and .deb).
+- The installers are saved as Artifacts in the GitHub Actions run summary for 90 days.
+### The Release Phase (Continuous Deployment)
+A formal GitHub Release is only triggered when you push a version tag.
+This creates a permanent download page for your users.
+
+#### How to trigger a new release:
+To release a new version (e.g., version 1.0.1), run the following commands in your terminal:
+
+```Bash
+# 1. Tag the current commit
+git tag v1.0.1
+
+# 2. Push the tag to GitHub
+git push origin v1.0.1
+```
+### Downloading the Installers
+- Go to the Releases section on the right-hand sidebar of this GitHub repository.
+- Find the latest version (e.g., v1.0.1).
+- Under Assets, you will find:
+  - MyAntApp-Installer.dmg (for macOS)
+  - MyAntApp-Linux.deb (for Ubuntu/Debian)
+
+### Pro-Tip: Changing the Version Number
+When you're ready to bump the version, remember to update the version number in two places to keep everything in sync:
+- The Git Tag (the v1.0.1 above).
+- The app.version property at the top of your build.xml. This ensures that when the user installs the app, the OS sees the correct version number in the "About" or "Get Info" screens.
