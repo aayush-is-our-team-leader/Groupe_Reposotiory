@@ -1,3 +1,14 @@
+# Backup files
+*~
+*.bak
+
+# MacOS files
+.DS_Store
+
+# Dynamically regenerated directories
+build/
+dist/
+
 # Compiled class file
 *.class
 
