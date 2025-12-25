@@ -21,6 +21,31 @@
     </not>
   </condition>
 
+  <macrodef name="generate-javadoc">
+    <attribute name="access-level" default="protected"/>
+    <attribute name="output-subdir"/>
+    <sequential>
+      <mkdir dir="${docs.dir}/@{output-subdir}"/>
+      <javadoc destdir="${docs.dir}/@{output-subdir}"
+               source="1.8"
+               encoding="UTF-8"
+               use="true"
+               author="true"
+               version="true"
+               failonerror="true"
+               access="@{access-level}">
+        <fileset dir="${src.dir}" includes="**/*.java"/>
+        <link href="${javadoc.api.url}"/>
+        <!-- Uncomment to resolve references in Javadoc comments to lib/ jars. -->
+        <!--
+            <classpath>
+            <pathelement path="${build.dir}"/>
+            <fileset dir="lib" includes="**/*.jar" erroronmissingdir="false"/>
+            </classpath>
+        -->
+        </javadoc>
+    </sequential>
+  </macrodef>
 
   <condition property="isMac">
     <os family="mac"/>
@@ -33,8 +58,21 @@
     </and>
   </condition>
 
-  <condition property="icon.file" value="icon.icns" else="icon.png">
+  <condition property="isWindows">
+    <os family="windows"/>
+  </condition>
+
+  <condition property="icon.file" value="icon.icns">
     <isset property="isMac"/>
+  </condition>
+  <condition property="icon.file" value="icon.ico">
+    <and>
+      <isset property="isWindows"/>
+      <not><isset property="icon.file"/></not>
+    </and>
+  </condition>
+  <condition property="icon.file" value="icon.png">
+    <not><isset property="icon.file"/></not>
   </condition>
 
   <target name="preflight" description="Print toolchain/OS info">
@@ -72,31 +110,20 @@
     <java jar="${jar.dir}/${app.name}.jar" fork="true"/>
   </target>
 
-  <target name="javadoc" depends="preflight" description="Generate Javadoc (works for unnamed or named packages)">
-    <mkdir dir="${docs.dir}"/>
-    <javadoc destdir="${docs.dir}"
-             source="1.8"
-             encoding="UTF-8"
-             use="true"
-             author="true"
-             version="true"
-             failonerror="true">
-      <fileset dir="${src.dir}" includes="**/*.java"/>
-
-      <link href="${javadoc.api.url}"/>
-      <!-- Uncomment to resolve references in Javadoc comments. -->
-      <!--
-          <classpath>
-          <pathelement path="${build.dir}"/>
-          <fileset dir="lib" includes="**/*.jar"/>
-          </classpath>
-      -->
-    </javadoc>
+  <target name="javadoc" depends="preflight" description="Generate standard API documentation">
+    <generate-javadoc access-level="protected" output-subdir="api"/>
   </target>
 
-  <target name="package" description="Build the native installer for the current OS (DMG or DEB)">
+  <target name="javadoc-internal" depends="preflight" description="Generate internal documentation (includes private members)">
+    <generate-javadoc access-level="private" output-subdir="internal"/>
+  </target>
+
+  <target name="javadoc-all" depends="javadoc, javadoc-internal" description="Generate both standard and internal documentation sets"/>
+
+  <target name="package" description="Build the native installer for the current OS (DMG, DEB, or MSI)">
     <antcall target="dmg"/>
     <antcall target="debian"/>
+    <antcall target="windows"/>
   </target>
 
   <target name="dmg" depends="jar" if="isMac" description="[Mac Only] Builds the .dmg installer">
@@ -146,6 +173,31 @@
       <mapper type="merge" to="${app.name}-Linux.deb"/>
     </move>
     <echo message="Success! Debian Package: ${dist.dir}/${app.name}-Linux.deb"/>
+  </target>
+
+  <target name="windows" depends="jar" if="isWindows" description="[Windows Only] Builds the .msi installer">
+    <mkdir dir="${dist.dir}"/>
+    <exec executable="jpackage" failonerror="true">
+      <arg value="--input"/><arg value="${jar.dir}"/>
+      <arg value="--dest"/><arg value="${dist.dir}"/>
+      <arg value="--name"/><arg value="${app.name}"/>
+      <arg value="--main-jar"/><arg value="${app.name}.jar"/>
+      <arg value="--main-class"/><arg value="${main.class}"/>
+      <arg value="--type"/><arg value="msi"/>
+      <arg value="--icon"/><arg value="${icon.file}"/>
+      <arg value="--app-version"/><arg value="${app.version}"/>
+      <arg value="--win-dir-chooser"/>
+      <arg value="--win-shortcut"/>
+      <arg value="--win-menu"/>
+    </exec>
+    <move todir="${dist.dir}">
+      <fileset dir="${dist.dir}">
+        <include name="${app.name}*.msi"/>
+        <exclude name="${app.name}-Windows.msi"/>
+      </fileset>
+      <mapper type="merge" to="${app.name}-Windows.msi"/>
+    </move>
+    <echo message="Success! Windows Installer: ${dist.dir}/${app.name}-Windows.msi"/>
   </target>
 
 </project>
