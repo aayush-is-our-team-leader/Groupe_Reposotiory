@@ -1,8 +1,7 @@
 ﻿# Team Foundation Notes
 
 ## 1. Team Experience
-*Member Name*: Aayush , Gage
-*Member Name*: jorge , Devna
+*Member Name*: Aayush , Gage,  jorge , Devna
 *Summary of Positive Attributes*:
 - Reliable communication
 - Clear role definitions
