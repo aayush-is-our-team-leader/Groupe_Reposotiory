@@ -1,7 +1,7 @@
 ﻿# Team Foundation Notes
-
+Team Name:TeamJAGD
 ## 1. Team Experience
-*Member Name*: Aayush , Gage,  jorge , Devna
+*Member Name*: Aayush, Gage,  Jorge, Devna
 *Summary of Positive Attributes*:
 - Reliable communication
 - Clear role definitions
