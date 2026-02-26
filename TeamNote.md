@@ -1,7 +1,7 @@
 ﻿# Team Foundation Notes :fishsticks:
 Team Name:TeamJAGD 
 ## 1. Team Experience
-*Member Name*: Aayush, Gage,  Jorge, Devna
+*Member Name*: Aayush, Gage,  Jorge, Devna, Alexis
 *Summary of Positive Attributes*:
 - Reliable communication
 - Clear role definitions
