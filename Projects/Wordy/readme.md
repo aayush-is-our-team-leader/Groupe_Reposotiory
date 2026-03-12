@@ -21,10 +21,10 @@ Our product (statement of primary differentiation) */
 
 
 ## User story - 
-#### As a:
-#### I want:
+#### As a: 
+#### I want: A fun way to learn English vocabulary
 #### So that:
-#### Acceptance:
+#### Acceptance: A fully working game with opportunity for entertainment/educational value, and a low barrier for entry/commitment.
 
 
 ### Notes
