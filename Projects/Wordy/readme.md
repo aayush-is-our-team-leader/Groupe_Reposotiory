@@ -21,9 +21,9 @@ Our product (statement of primary differentiation) */
 
 
 ## User story - 
-#### As a: 
+#### As a: Gen-Z learner at any stage of their English learning journey (beginner to advanced)
 #### I want: A fun way to learn English vocabulary
-#### So that:
+#### So that: I can learn or revise vocabulary in a fun way
 #### Acceptance: A fully working game with opportunity for entertainment/educational value, and a low barrier for entry/commitment.
 ##### Characteristics/aspects of our stakeholders would include...
 
@@ -31,6 +31,7 @@ Our product (statement of primary differentiation) */
 (libraries to prob use)
 import random
 import nltk
-
+Difficulty levels (A1 TO C1)
+Users can use a hint (One letter is revealed)
 
 @Team Element
