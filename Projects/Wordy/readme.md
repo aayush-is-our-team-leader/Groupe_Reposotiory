@@ -20,18 +20,27 @@ Unlike (primary competitive alternative)
 Our product (statement of primary differentiation) */
 
 
-## User story - 
-#### As a: Gen-Z learner at any stage of their English learning journey (beginner to advanced)
-#### I want: A fun way to learn English vocabulary
-#### So that: I can learn or revise vocabulary in a fun way
-#### Acceptance: A fully working game with opportunity for entertainment/educational value, and a low barrier for entry/commitment.
-##### Characteristics/aspects of our stakeholders would include...
+Proposed User Story: The "Rapid-Fire Alpha"
+As a: Gen-Z learner looking for a quick hits of dopamine,
+I want: A 30-second "Infinite Swipe" vocabulary challenge,
+I can: Test my current knowledge and feel immediate progress without committing to a full lesson.
 
-### Notes
-(libraries to prob use)
-import random
-import nltk
-Difficulty levels (A1 TO C1)
-Users can use a hint (One letter is revealed)
+Acceptance Criteria (The "Fast" Version)
+Core Mechanic: User is presented with a word and two definitions; they must swipe left/right to choose the correct one.
+
+Gen-Z Flavor: Use "Slang vs. Standard" modes (e.g., Is 'Bet' a wager or an agreement?).
+
+The Hook: A visual "Streak Counter" that shakes or changes color as the user gets more correct answers.
+
+Low Barrier: No login required to play the first round; game starts within one tap of opening.
+
+Tech Constraint: Use a static list of 50 high-frequency words rather than a full database to speed up dev.
+
+Why this is better for "Tomorrow":
+Skip the Boring Stuff: You aren't writing stories for "Login," "Profile Settings," or "Leaderboards."
+
+Test the "Fun": If the swiping mechanic isn't fun with 50 words, it won't be fun with 5,000.
+
+Low Commitment: It addresses the "low barrier for entry" immediately.
 
 @Team Element
