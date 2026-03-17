@@ -3,7 +3,8 @@ In this report, we are making a wordel kinda game like logic, using the python, 
 
 ## the size of the word will be 5
 ##You have to guess the 5-character word
-## have fun
+
+## Have fun
 
 ## Vision Statement -
 #### For: Bored, young, and passionate students looking for something fun and meaningful to do in their free time.
