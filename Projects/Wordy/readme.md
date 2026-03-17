@@ -20,7 +20,7 @@ Unlike (primary competitive alternative)
 Our product (statement of primary differentiation) */
 
 
-Proposed User Story: The "Rapid-Fire Alpha"
+## Proposed User Story: 
 As a: Gen-Z learner looking for a quick hits of dopamine,
 I want: A 30-second "Infinite Swipe" vocabulary challenge,
 I can: Test my current knowledge and feel immediate progress without committing to a full lesson.
