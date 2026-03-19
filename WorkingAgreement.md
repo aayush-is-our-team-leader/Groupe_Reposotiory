@@ -77,3 +77,4 @@ The working agreement is a **living document** and will be reviewed at the **sta
 - **Devna**  
 - **Gage**  
 - **Aayush**
+- **Hassan**
