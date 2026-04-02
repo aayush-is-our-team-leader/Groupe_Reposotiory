@@ -3,7 +3,7 @@ Team Name:Team Elements
 
 ## 1. Team Experience
 *Member Name*: Aayush, Gage,  Jorge, Devna, Hassan, Prerana
-#Summary of Positive Attributes*:
+##Summary of Positive Attributes*:
 - Reliable communication
 - Clear role definitions
 - High transparency
